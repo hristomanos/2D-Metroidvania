@@ -24,11 +24,12 @@ public class PlayerMovementController : MonoBehaviour
     private InputAction jumpAction;
     private InputAction moveAction;
     private InputAction attackAction;
+    private InputAction attackUpAction;
 
     private Rigidbody2D rb;
 
     private bool isOnGround;
-    private float horizontalMovementInput;
+    private Vector2 movementInput;
 
     public bool IsOnGround => isOnGround;
 
@@ -63,7 +64,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void Update()
     {
-        horizontalMovementInput = moveAction.ReadValue<Vector2>().x;
+        movementInput = moveAction.ReadValue<Vector2>();
     }
 
     void FixedUpdate()
@@ -98,7 +99,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void MoveHorizontally()
     {
-        rb.velocity = new Vector2(horizontalMovementInput * movementSpeed, Mathf.Max(rb.velocity.y, -maxFallSpeed));
+        rb.velocity = new Vector2(movementInput.x * movementSpeed, Mathf.Max(rb.velocity.y, -maxFallSpeed));
     }
 
     private void ApplyGravityModifier()
@@ -122,7 +123,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void FlipSprite()
     {
-        if(spriteRenderer.flipX && horizontalMovementInput > 0f || spriteRenderer.flipX is false && horizontalMovementInput < 0f)
+        if(spriteRenderer.flipX && movementInput.x > 0f || spriteRenderer.flipX is false && movementInput.x < 0f)
         {
             spriteRenderer.flipX = !spriteRenderer.flipX;
         }
@@ -130,6 +131,17 @@ public class PlayerMovementController : MonoBehaviour
 
     private void OnAttackButtonPressed(InputAction.CallbackContext context)
     {
-        comboAttackInvoker.HandleCombo();
+        if(movementInput.y > 0.5f)
+        {
+            animator.SetTrigger("AttackUp");
+        }
+        else if(movementInput.y < -0.5f)
+        {
+            animator.SetTrigger("AttackDown");
+        }
+        else
+        {
+            comboAttackInvoker.HandleCombo();
+        }
     }
 }
