@@ -86,7 +86,7 @@ public class PlayerMovementController : MonoBehaviour
         if(isOnGround is false)
             return;
 
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);        
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);        
     }
 
     private void OnJumpButtonReleased(InputAction.CallbackContext context)
@@ -99,7 +99,7 @@ public class PlayerMovementController : MonoBehaviour
 
     private void MoveHorizontally()
     {
-        rb.velocity = new Vector2(movementInput.x * movementSpeed, Mathf.Max(rb.velocity.y, -maxFallSpeed));
+        rb.linearVelocity = new Vector2(movementInput.x * movementSpeed, Mathf.Max(rb.linearVelocity.y, -maxFallSpeed));
     }
 
     private void ApplyGravityModifier()

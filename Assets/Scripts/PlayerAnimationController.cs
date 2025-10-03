@@ -15,8 +15,8 @@ public class PlayerAnimationController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        playerAnimator.SetFloat("xVelocity", Mathf.Abs(rb.velocity.x));
-        playerAnimator.SetFloat("yVelocity", rb.velocity.y);
+        playerAnimator.SetFloat("xVelocity", Mathf.Abs(rb.linearVelocity.x));
+        playerAnimator.SetFloat("yVelocity", rb.linearVelocity.y);
         playerAnimator.SetBool("isJumping", !playerMovementController.IsOnGround);
     }
 }
