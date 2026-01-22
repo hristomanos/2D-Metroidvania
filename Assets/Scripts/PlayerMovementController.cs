@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -75,9 +73,12 @@ public class PlayerMovementController : MonoBehaviour
         FlipSprite();
 
         GroundCheck();
+        
+        if (comboAttackInvoker.IsComboAttacking)
+            StopHorizontalMovement();
+        else
+            MoveHorizontally();
 
-        MoveHorizontally();
-       
         if(isOnGround)
         {
             ResetGravityModifier();   
@@ -103,6 +104,11 @@ public class PlayerMovementController : MonoBehaviour
     private void MoveHorizontally()
     {
         rb.linearVelocity = new Vector2(movementInput.x * movementSpeed, Mathf.Max(rb.linearVelocity.y, -maxFallSpeed));
+    }
+
+    private void StopHorizontalMovement()
+    {
+        rb.linearVelocity = Vector2.zero;
     }
 
     private void ApplyGravityModifier()
@@ -134,6 +140,9 @@ public class PlayerMovementController : MonoBehaviour
 
     private void OnAttackButtonPressed(InputAction.CallbackContext context)
     {
+        if (isOnGround is false)
+            return;
+        
         if(movementInput.y > 0.5f)
         {
             animator.SetTrigger(AttackUp);
