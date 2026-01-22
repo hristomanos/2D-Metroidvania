@@ -5,3 +5,10 @@ PrefabImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 162831
+  packageName: Metroidvania Adventure
+  packageVersion: 
+  assetPath: Assets/Prefabs/Players/Player2.prefab
+  uploadId: 0

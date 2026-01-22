@@ -6,3 +6,10 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 162831
+  packageName: Metroidvania Adventure
+  packageVersion: 
+  assetPath: Assets/Animations/Player1/Attack3.anim
+  uploadId: 0
