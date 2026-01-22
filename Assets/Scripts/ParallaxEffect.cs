@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
@@ -30,9 +28,8 @@ public class ParallaxEffect : MonoBehaviour
 
         transform.position = new Vector3(startPositionX + relativeDistanceX, startPositionY + relativeDistanceY, transform.position.z);
 
-        float relativeCameraDistance = cameraTranform.transform.position.x * (1f - parallaxSpeedX);
-
-
+        var relativeCameraDistance = cameraTranform.transform.position.x * (1f - parallaxSpeedX);
+        
         if(relativeCameraDistance > startPositionX + spriteSizeX)
         {
             startPositionX += spriteSizeX;

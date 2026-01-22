@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovementController : MonoBehaviour
 {
+    private static readonly int AttackUp = Animator.StringToHash("AttackUp");
+    private static readonly int AttackDown = Animator.StringToHash("AttackDown");
+
     [Header("Attributes")]
     [SerializeField] private float movementSpeed;
     [SerializeField] private float jumpForce;
@@ -133,11 +136,11 @@ public class PlayerMovementController : MonoBehaviour
     {
         if(movementInput.y > 0.5f)
         {
-            animator.SetTrigger("AttackUp");
+            animator.SetTrigger(AttackUp);
         }
         else if(movementInput.y < -0.5f)
         {
-            animator.SetTrigger("AttackDown");
+            animator.SetTrigger(AttackDown);
         }
         else
         {

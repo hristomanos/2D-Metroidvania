@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ComboAttackInvoker : MonoBehaviour
 {
-    private string[] attackAnimationStrings = { "Attack1", "Attack2", "Attack3", "Attack4"};
+    private readonly string[] attackAnimationStrings = { "Attack1", "Attack2", "Attack3", "Attack4"};
 
-    private float comboResetDelay = 0.5f;
-    private float lastPressTime = 0f;
+    private const float ComboResetDelay = 0.5f;
+    private float lastPressTime;
 
     private Animator animator;
     private int numberOfButtonPresses;
@@ -19,7 +17,7 @@ public class ComboAttackInvoker : MonoBehaviour
 
     private void Update()
     {
-        if(Time.time - lastPressTime > comboResetDelay)
+        if(Time.time - lastPressTime > ComboResetDelay)
             ResetNumberOfButtonPresses();
     }
 
