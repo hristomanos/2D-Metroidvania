@@ -6,21 +6,21 @@ public class PlayerAnimationController : MonoBehaviour
     private static readonly int YVelocity = Animator.StringToHash("yVelocity");
     private static readonly int IsJumping = Animator.StringToHash("isJumping");
     
-    private PlayerMovementController playerMovementController;
     private Animator playerAnimator;
     private Rigidbody2D rb;
+    private GroundChecker groundChecker;
 
     void Awake()
     {
         playerAnimator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        playerMovementController = GetComponent<PlayerMovementController>();
+        groundChecker = GetComponent<GroundChecker>();
     }
 
     private void FixedUpdate()
     {
         playerAnimator.SetFloat(XVelocity, Mathf.Abs(rb.linearVelocity.x));
         playerAnimator.SetFloat(YVelocity, rb.linearVelocity.y);
-        playerAnimator.SetBool(IsJumping, !playerMovementController.IsOnGround);
+        playerAnimator.SetBool(IsJumping, groundChecker.IsOnGround is false);
     }
 }
