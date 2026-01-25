@@ -10,11 +10,11 @@ public class PlayerMovementController : MonoBehaviour
     private Rigidbody2D rb;
     
     private PlayerJump playerJump;
-    private GroundChecker groundChecker;
-    
     private PlayerInput playerInput;
     private Vector2     movementInput;
     private InputAction moveAction;
+    
+    private PlayerStateController playerStateController;
     
     private void Awake()
     {
@@ -22,6 +22,7 @@ public class PlayerMovementController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerInput = GetComponent<PlayerInput>();
         playerJump = GetComponent<PlayerJump>();
+        playerStateController = GetComponent<PlayerStateController>();
         
         moveAction = playerInput.actions[PlayerInputStrings.Move];
     }
@@ -34,6 +35,9 @@ public class PlayerMovementController : MonoBehaviour
     private void FixedUpdate()
     {
         FlipSprite();
+        
+        if(playerStateController.CurrentState == PlayerState.Attacking)
+            return;
         
         MoveHorizontally();
     }

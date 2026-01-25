@@ -20,6 +20,8 @@ GameObject:
   - component: {fileID: 6411162860804572976}
   - component: {fileID: 4810152836617983608}
   - component: {fileID: 776156199499402884}
+  - component: {fileID: 4168273763816162704}
+  - component: {fileID: 6590993126580610354}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -307,3 +309,27 @@ MonoBehaviour:
   maxFallSpeed: 3
   fallSpeedModifier: 2
   jumpForce: 10
+--- !u!114 &4168273763816162704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7738907795435258547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc2d71b49a23b7e40aab9d7653d6962a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStateController
+--- !u!114 &6590993126580610354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7738907795435258547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37757dec1f2d8164ca0958510494f7ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack

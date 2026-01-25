@@ -10,7 +10,7 @@ public class ComboAttackInvoker : MonoBehaviour
     private Animator animator;
     private int numberOfButtonPresses;
     
-    public bool IsComboAttacking => numberOfButtonPresses > 0;
+    public int NumberOfButtonPresses => numberOfButtonPresses;
 
     private void Awake()
     {
@@ -60,5 +60,4 @@ public class ComboAttackInvoker : MonoBehaviour
     {
         numberOfButtonPresses = 0;
     }
-
 }
