@@ -1,10 +1,17 @@
 using UnityEngine;
 
-public class ResetComboOnIdle : StateMachineBehaviour
+public class MovementAnimationStateMachine : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        var playerAttack = animator.GetComponent<PlayerAttack>();
+
+        if (playerAttack != null)
+        {
+            playerAttack.StopAttacking();
+        }
+        
         var invoker = animator.GetComponent<ComboAttackInvoker>();
         if(invoker != null)
         {

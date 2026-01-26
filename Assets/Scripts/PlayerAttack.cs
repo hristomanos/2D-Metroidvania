@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,20 +11,24 @@ public class PlayerAttack : MonoBehaviour
     private InputAction moveAction;
     private ComboAttackInvoker comboAttackInvoker;
     private Animator animator;
+    private GroundChecker  groundChecker;
 
     private Vector2 moveInput;
 
     public bool IsAttacking { get; private set; }
     
+    public void StopAttacking() => IsAttacking = false;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
+        groundChecker = GetComponent<GroundChecker>();
         attackAction = playerInput.actions[PlayerInputStrings.Attack];
         moveAction = playerInput.actions[PlayerInputStrings.Move];
     }
-    
-    void Start()
+
+    private void Start()
     {
         attackAction.performed += OnAttackButtonPressed;
         
@@ -35,18 +38,26 @@ public class PlayerAttack : MonoBehaviour
     private void Update()
     {
         moveInput = moveAction.ReadValue<Vector2>();
-
-        if (comboAttackInvoker.NumberOfButtonPresses > 0 is false) 
-            IsAttacking = false;
     }
 
     private void OnAttackButtonPressed(InputAction.CallbackContext context)
     {
+        if(groundChecker.IsOnGround is false)
+            return;
+        
         IsAttacking = true;
-        //animator.SetTrigger(AttackUp);
-        
-        //animator.SetTrigger(AttackDown);
-        
-        comboAttackInvoker.HandleCombo();
+
+        if (moveInput.y > 0.1f)
+        {
+            animator.SetTrigger(AttackUp);
+        }
+        else if (moveInput.y < -0.1f)
+        {
+            animator.SetTrigger(AttackDown);
+        }
+        else
+        {
+            comboAttackInvoker.HandleCombo();
+        }
     }
 }

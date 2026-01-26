@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerStateController : MonoBehaviour
 {
@@ -8,14 +7,11 @@ public class PlayerStateController : MonoBehaviour
     private GroundChecker groundChecker;
     private Rigidbody2D   rb;
     
-    private PlayerInput playerInput;
-
     private PlayerAttack playerAttack;
 
     private void Awake()
     {
         playerAttack = GetComponent<PlayerAttack>();
-        playerInput = GetComponent<PlayerInput>();
     }
     
     void Start()
@@ -23,7 +19,6 @@ public class PlayerStateController : MonoBehaviour
         groundChecker = GetComponent<GroundChecker>();
         rb = GetComponent<Rigidbody2D>();
     }
-
     
     void Update()
     {
@@ -36,7 +31,7 @@ public class PlayerStateController : MonoBehaviour
         
         if (groundChecker.IsOnGround is false) 
             CurrentState = rb.linearVelocityY > 0 ? PlayerState.Jumping : PlayerState.Falling;
-        
-        CurrentState = Mathf.Abs(rb.linearVelocityX) > 0.1f ? PlayerState.Running : PlayerState.Idle;
+        else
+            CurrentState = Mathf.Abs(rb.linearVelocityX) > 0.1f ? PlayerState.Running : PlayerState.Idle;
     }
 }
