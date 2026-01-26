@@ -10,8 +10,6 @@ public class ComboAttackInvoker : MonoBehaviour
     private Animator animator;
     private int numberOfButtonPresses;
     
-    public int NumberOfButtonPresses => numberOfButtonPresses;
-
     private void Awake()
     {
         animator = GetComponent<Animator>();

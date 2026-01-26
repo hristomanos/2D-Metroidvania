@@ -1320,7 +1320,7 @@ CompositeCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.108}
+  m_Offset: {x: 0, y: -0.16}
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
@@ -1337,10 +1337,10 @@ CompositeCollider2D:
         Y: -40000000
   m_CompositePaths:
     m_Paths:
-    - - {x: 9, y: -4.108}
-      - {x: -9, y: -4.108}
-      - {x: -9, y: -7.108}
-      - {x: 9, y: -7.108}
+    - - {x: 9, y: -4.16}
+      - {x: -9, y: -4.16}
+      - {x: -9, y: -7.16}
+      - {x: 9, y: -7.16}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0
   m_UseDelaunayMesh: 0

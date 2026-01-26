@@ -7,7 +7,7 @@ public class ParallaxEffect : MonoBehaviour
     [SerializeField] private float parallaxSpeedY;
 
     private SpriteRenderer spriteRenderer;
-    private Transform cameraTranform;
+    private Transform cameraTransform;
     private float startPositionX;
     private float startPositionY;
     private float spriteSizeX;
@@ -15,7 +15,7 @@ public class ParallaxEffect : MonoBehaviour
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        cameraTranform = Camera.main.transform;
+        cameraTransform = Camera.main.transform;
         startPositionX = transform.position.x;
         startPositionY = transform.position.y;
         spriteSizeX = spriteRenderer.bounds.size.x;
@@ -23,12 +23,12 @@ public class ParallaxEffect : MonoBehaviour
 
     private void Update()
     {
-        var relativeDistanceX =  cameraTranform.position.x * parallaxSpeedX;
-        var relativeDistanceY =  cameraTranform.position.y * parallaxSpeedY;
+        var relativeDistanceX =  cameraTransform.position.x * parallaxSpeedX;
+        var relativeDistanceY =  cameraTransform.position.y * parallaxSpeedY;
 
         transform.position = new Vector3(startPositionX + relativeDistanceX, startPositionY + relativeDistanceY, transform.position.z);
 
-        var relativeCameraDistance = cameraTranform.transform.position.x * (1f - parallaxSpeedX);
+        var relativeCameraDistance = cameraTransform.transform.position.x * (1f - parallaxSpeedX);
         
         if(relativeCameraDistance > startPositionX + spriteSizeX)
         {

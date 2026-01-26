@@ -4,9 +4,9 @@ public class GroundCheckDebugRenderer : MonoBehaviour
 {
     private float groundCheckCircleRadius;
 
-    public void Initialize(float groundCheckCircleRadius)
+    public void Initialize(float circleRadius)
     {
-        this.groundCheckCircleRadius = groundCheckCircleRadius;
+        groundCheckCircleRadius = circleRadius;
     }
 
     private void OnDrawGizmos()
