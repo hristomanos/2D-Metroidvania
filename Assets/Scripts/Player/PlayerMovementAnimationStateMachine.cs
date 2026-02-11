@@ -29,9 +29,6 @@ namespace Player
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             var stateController = animator.GetComponent<PlayerStateController>();
-
-            if (stateController.CurrentState != PlayerState.Idle) 
-                return;
         
             timer -= Time.deltaTime;
             if (timer <= 0)

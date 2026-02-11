@@ -22,7 +22,7 @@ namespace Player
             rb = GetComponent<Rigidbody2D>();
         }
     
-        void Update()
+        /*void Update()
         {
             if (playerAttack.IsAttacking && groundChecker.IsOnGround)
             {
@@ -35,6 +35,6 @@ namespace Player
                 CurrentState = rb.linearVelocityY > 0 ? PlayerState.Jumping : PlayerState.Falling;
             else
                 CurrentState = Mathf.Abs(rb.linearVelocityX) > 0.1f ? PlayerState.Running : PlayerState.Idle;
-        }
+        }*/
     }
 }
