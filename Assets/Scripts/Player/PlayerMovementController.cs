@@ -5,22 +5,23 @@ namespace Player
     public class PlayerMovementController
     {
         private float movementSpeed;
-    
+        private float maxFallSpeed;
+        
         private SpriteRenderer spriteRenderer;
         private Rigidbody2D rb;
-        private PlayerJump playerJump;
 
-        public PlayerMovementController(Rigidbody2D rb, SpriteRenderer spriteRenderer, PlayerJump playerJump, float movementSpeed)
+        public PlayerMovementController(PlayerCharacter player, SpriteRenderer spriteRenderer, float movementSpeed)
         {
-            this.rb = rb;
+            rb = player.Rb;
+            maxFallSpeed = player.MaxFallSpeed;
+            
             this.spriteRenderer = spriteRenderer;
-            this.playerJump = playerJump;
             this.movementSpeed = movementSpeed;
         }
     
         public void MoveCharacter(Vector2 movementInput)
         {
-            rb.linearVelocity = new Vector2(movementInput.x * movementSpeed, Mathf.Max(rb.linearVelocity.y, -playerJump.MaxFallSpeed));
+            rb.linearVelocity = new Vector2(movementInput.x * movementSpeed, Mathf.Max(rb.linearVelocity.y, -maxFallSpeed));
         }
     
         public void FlipSprite(Vector2 movementInput)

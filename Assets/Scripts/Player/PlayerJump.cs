@@ -1,70 +1,34 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Player
 {
-    public class PlayerJump : MonoBehaviour
+    public class PlayerJump
     {
-        [Header("Gravity modifier")]
-        [SerializeField] private int baseGravity;
-        [SerializeField] private int maxFallSpeed;
-        [SerializeField] private int fallSpeedModifier;
-    
-        [SerializeField] private float jumpForce;
-    
-        private PlayerInput playerInput;
-        private InputAction jumpAction;
-    
+        private readonly int baseGravity;
+        private readonly int fallSpeedModifier;
+        private readonly float jumpForce;
+
         private Rigidbody2D rb;
-        private GroundChecker groundChecker;
 
-        public int MaxFallSpeed => maxFallSpeed;
-
-        private void Awake()
+        public PlayerJump(Rigidbody2D rb, int baseGravity, int fallSpeedModifier,  float jumpForce)
         {
-            rb = GetComponent<Rigidbody2D>();
-            groundChecker = GetComponent<GroundChecker>();
-            playerInput = GetComponent<PlayerInput>();
-        
-            jumpAction = playerInput.actions["Jump"];
+            this.rb = rb;
+            this.baseGravity = baseGravity;
+            this.fallSpeedModifier = fallSpeedModifier;
+            this.jumpForce = jumpForce;
         }
 
-        void Start()
+        public void MakeCharacterJump()
         {
-            jumpAction.performed += OnJumpButtonPressed;
-            jumpAction.canceled += OnJumpButtonReleased;
-        }
-
-        private void FixedUpdate()
-        {
-            if(groundChecker.IsOnGround)
-            {
-                ResetGravityModifier();   
-            }
-        }
-
-        private void OnJumpButtonPressed(InputAction.CallbackContext context)
-        {
-            if(groundChecker.IsOnGround is false)
-                return;
-
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);        
         }
-
-        private void OnJumpButtonReleased(InputAction.CallbackContext context)
-        {
-            if(groundChecker.IsOnGround)
-                return;
-
-            ApplyGravityModifier();
-        }
-    
-        private void ApplyGravityModifier()
+        
+        public void ApplyGravityModifier()
         {
             rb.gravityScale = fallSpeedModifier;
         }
 
-        private void ResetGravityModifier()
+        public void ResetGravityModifier()
         {
             rb.gravityScale = baseGravity;
         }

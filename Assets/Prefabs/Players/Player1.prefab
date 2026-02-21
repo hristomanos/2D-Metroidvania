@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 8056409895950364517}
   - component: {fileID: 7454932569780138030}
   - component: {fileID: 8312011459493830666}
-  - component: {fileID: 776156199499402884}
   - component: {fileID: 1891185344091386510}
   - component: {fileID: 4810152836617983608}
   - component: {fileID: 5169287016139792594}
@@ -238,22 +237,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c8b7829bb8db234a8493d4c893fa42c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &776156199499402884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7738907795435258547}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 234cecfbd7f58d847aa20ff4657c04a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerJump
-  baseGravity: 10
-  maxFallSpeed: 3
-  fallSpeedModifier: 2
-  jumpForce: 10
 --- !u!114 &1891185344091386510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,6 +278,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerCharacter
   movementSpeed: 10
+  baseGravity: 10
+  maxFallSpeed: 10
+  fallSpeedModifier: 10
+  jumpForce: 10
 --- !u!114 &7971865035724513467
 MonoBehaviour:
   m_ObjectHideFlags: 0

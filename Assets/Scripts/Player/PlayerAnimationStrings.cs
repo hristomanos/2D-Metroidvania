@@ -4,5 +4,6 @@
     {
         public const string Idle = "Idle";
         public const string Move = "Move";
+        public const string Jump = "Jump";
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Player
 {
-    public class PlayerState
+    public abstract class PlayerState
     {
         protected readonly Animator animationController;
         protected readonly string animationName;
@@ -26,6 +26,7 @@ namespace Player
             startTime = Time.time;
             isExitingState = false;
             isAnimationFinished = false;
+            
             animationController.SetBool(animationName, true);
         }
 
