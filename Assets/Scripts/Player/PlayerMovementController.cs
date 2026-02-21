@@ -19,14 +19,14 @@ namespace Player
             this.movementSpeed = movementSpeed;
         }
     
-        public void MoveCharacter(Vector2 movementInput)
+        public void MoveCharacter(float movementInputX)
         {
-            rb.linearVelocity = new Vector2(movementInput.x * movementSpeed, Mathf.Max(rb.linearVelocity.y, -maxFallSpeed));
+            rb.linearVelocity = new Vector2(movementInputX * movementSpeed, Mathf.Max(rb.linearVelocity.y, -maxFallSpeed));
         }
     
-        public void FlipSprite(Vector2 movementInput)
+        public void FlipSprite(float movementInputX)
         {
-            if(spriteRenderer.flipX && movementInput.x > 0f || spriteRenderer.flipX is false && movementInput.x < 0f)
+            if(spriteRenderer.flipX && movementInputX > 0f || spriteRenderer.flipX is false && movementInputX < 0f)
             {
                 
                 spriteRenderer.flipX = !spriteRenderer.flipX;

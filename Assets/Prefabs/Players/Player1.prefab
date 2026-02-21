@@ -278,10 +278,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerCharacter
   movementSpeed: 10
-  baseGravity: 10
-  maxFallSpeed: 10
-  fallSpeedModifier: 10
-  jumpForce: 10
+  baseGravity: 1
+  maxFallSpeed: 18
+  fallSpeedModifier: 3
+  jumpForce: 8
 --- !u!114 &7971865035724513467
 MonoBehaviour:
   m_ObjectHideFlags: 0

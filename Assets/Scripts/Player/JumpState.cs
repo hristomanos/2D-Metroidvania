@@ -21,12 +21,9 @@ namespace Player
             if(player.GroundChecker.IsOnGround is false)
                 return;
             
-            Debug.Log("Making Character Jump");
-            
             playerJump.MakeCharacterJump();
         }
-
-
+        
         public override void TransitionChecks()
         {
             base.TransitionChecks();
@@ -35,8 +32,6 @@ namespace Player
             {
                 playerJump.ResetGravityModifier();
                 stateMachine.ChangeState(player.IdleState);
-                
-                Debug.Log("Reset Gravity Modifier");
             }
         }
 
@@ -46,8 +41,6 @@ namespace Player
                 return;
             
             playerJump.ApplyGravityModifier();
-            
-            Debug.Log("Applied Gravity Modifier");
         }
     }
 }

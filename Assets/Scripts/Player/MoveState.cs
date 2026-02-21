@@ -22,9 +22,9 @@ namespace Player
         {
             base.PhysicsUpdate();
             
-            playerMovementController.FlipSprite(movementInput);
+            playerMovementController.FlipSprite(movementInput.x);
 
-            playerMovementController.MoveCharacter(movementInput);
+            playerMovementController.MoveCharacter(movementInput.x);
         }
         
         
