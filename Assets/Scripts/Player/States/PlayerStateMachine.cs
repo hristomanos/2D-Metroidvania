@@ -18,7 +18,7 @@ namespace Player.States
             currentState = newState;
             currentState.Enter();
         }
-
+        
         private void Update()
         {
             currentState.LogicUpdate();
@@ -27,6 +27,11 @@ namespace Player.States
         private void FixedUpdate()
         {
             currentState.PhysicsUpdate();
+        }
+        
+        public void AnimationEnded()
+        {
+            currentState.AnimationTrigger();
         }
     }
 }

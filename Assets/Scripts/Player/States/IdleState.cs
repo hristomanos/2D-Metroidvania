@@ -8,6 +8,23 @@ namespace Player.States
         public IdleState(PlayerCharacter player, PlayerStateMachine stateMachine, Animator animationController, string animationName) : base(player, stateMachine, animationController, animationName)
         {
             jumpAction.performed += OnJumpButtonPressed;
+            attackAction.performed += OnAttackButtonPressed;
+        }
+
+        private void OnAttackButtonPressed(InputAction.CallbackContext context)
+        {
+            switch (movementInput.y)
+            {
+                case > 0:
+                    stateMachine.ChangeState(player.AttackUpState);
+                    break;
+                case < 0:
+                    stateMachine.ChangeState(player.AttackDownState);
+                    break;
+                default:
+                    stateMachine.ChangeState(player.FirstComboAttackState);
+                    break;
+            }
         }
 
         public override void TransitionChecks()

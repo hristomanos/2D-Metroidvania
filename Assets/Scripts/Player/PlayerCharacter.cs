@@ -31,6 +31,10 @@ namespace Player
         private IdleState idleState;
         private MoveState moveState;
         
+        private AttackUpState attackUpState;
+        private AttackDownState attackDownState;
+        private FirstComboAttackState firstComboAttackState;
+        
         private PlayerMovementController playerMovementController;
         private PlayerJump playerJump;
         
@@ -45,6 +49,9 @@ namespace Player
         public IdleState IdleState => idleState;
         public MoveState MoveState => moveState;
         public JumpState JumpState => jumpState;
+        public AttackUpState AttackUpState => attackUpState;
+        public AttackDownState AttackDownState => attackDownState;
+        public FirstComboAttackState FirstComboAttackState => firstComboAttackState;
         
         public GroundChecker GroundChecker => groundChecker;
         
@@ -72,6 +79,9 @@ namespace Player
             idleState = new IdleState(this, stateMachine, animator, PlayerAnimationStrings.Idle);
             moveState = new MoveState(this, stateMachine, animator, PlayerAnimationStrings.Move);
             jumpState = new JumpState(this, stateMachine, animator, PlayerAnimationStrings.Jump);
+            firstComboAttackState = new FirstComboAttackState(this, stateMachine, animator, PlayerAnimationStrings.FirstComboAttack);
+            attackUpState = new AttackUpState(this, stateMachine, animator, PlayerAnimationStrings.AttackUp);
+            attackDownState = new AttackDownState(this, stateMachine, animator, PlayerAnimationStrings.AttackDown);
             
             stateMachine.Initialize(idleState);
         }

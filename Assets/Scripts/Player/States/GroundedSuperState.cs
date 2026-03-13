@@ -1,8 +1,7 @@
-﻿using Player.States;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Player
+namespace Player.States
 {
     public class GroundedSuperState : PlayerState
     {
