@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Player
+namespace Player.States
 {
     public class IdleState : GroundedSuperState
     {

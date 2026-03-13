@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Player.States;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Player
@@ -8,11 +9,13 @@ namespace Player
         protected Vector2     movementInput;
         protected InputAction moveAction;
         protected InputAction jumpAction;
+        protected InputAction attackAction;
         protected bool isOnGround;
         
         protected GroundedSuperState(PlayerCharacter player, PlayerStateMachine stateMachine, Animator animationController,
             string animationName) : base(player, stateMachine, animationController, animationName)
         {
+            attackAction = player.AttackAction;
             moveAction = player.MoveAction;
             jumpAction = player.JumpAction;
             isOnGround = player.GroundChecker.IsOnGround;

@@ -1,3 +1,4 @@
+using Player.States;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,6 +18,7 @@ namespace Player
         private PlayerInput playerInput;
         private InputAction moveAction;
         private InputAction jumpAction;
+        private InputAction attackAction;
         
         private SpriteRenderer spriteRenderer;
         private GroundChecker groundChecker;
@@ -38,6 +40,7 @@ namespace Player
         
         public InputAction MoveAction => moveAction;
         public InputAction JumpAction => jumpAction;
+        public InputAction AttackAction => attackAction;
         
         public IdleState IdleState => idleState;
         public MoveState MoveState => moveState;
@@ -61,6 +64,7 @@ namespace Player
             
             moveAction = playerInput.actions[PlayerInputStrings.Move];
             jumpAction = playerInput.actions[PlayerInputStrings.Jump];
+            attackAction = playerInput.actions[PlayerInputStrings.Attack];
             
             playerJump = new PlayerJump(rb, baseGravity, fallSpeedModifier, jumpForce);
             playerMovementController = new PlayerMovementController(this, spriteRenderer, movementSpeed);
