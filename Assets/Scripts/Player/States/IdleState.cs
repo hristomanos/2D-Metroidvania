@@ -22,7 +22,6 @@ namespace Player
         
         private void OnJumpButtonPressed(InputAction.CallbackContext context)
         {
-            Debug.Log("OnJumpButtonPressed");
             stateMachine.ChangeState(player.JumpState);
         }
     }
